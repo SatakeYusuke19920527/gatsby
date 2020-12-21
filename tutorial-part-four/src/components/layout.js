@@ -1,10 +1,22 @@
 import React from "react"
 import { css } from "@emotion/react"
-import { Link } from "gatsby"
-
+import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
 
 export default function Layout({ children }) {
+  const data = useStaticQuery(
+    graphql`
+    query {
+        site {
+          siteMetadata {
+            title,
+            description
+          }
+        }
+      }
+    `
+  )
+  console.log(data)
   return (
     <div
       css={css`
